@@ -18,7 +18,7 @@ To use this utility follow the following steps:
 
 If the SSH connection drops, the script will run again; repeat steps 5-7.
 
-To run the script automatically on startup, add a shortcut to connectHomeCS.bat to %AppData%\Microsoft\Windows\Start Menu\Programs\Startup
+To run the script automatically on startup, add a shortcut to connectHomeCS.bat to ```%AppData%\Microsoft\Windows\Start Menu\Programs\Startup```
 
 If you don't want to trust the pre-built executable, you can compile it yourself [here](../src/).
 
@@ -40,6 +40,6 @@ If you don't want to trust the pre-built executable, you can compile it yourself
 11. Tick 'Remember my credentials'.
 12. Click Ok.
 13. Repeat steps 10-12.
-14. *(Optional)* Restart ConnectHomeCS.bat.
+14. *(Optional)* Stop and re-run ConnectHomeCS.bat.
 
 *Note: These steps are only required once.*
