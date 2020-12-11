@@ -12,11 +12,7 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e21bc18d-7c42-4fd5-a9dd-15ff22c52f3c" name="Default Changelist" comment="Updated README.md">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mount CS Home Folder Remote/port_proxy_renamed.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Mount CS Home Folder Remote/port_proxy_renamed.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
-    </list>
+    <list default="true" id="e21bc18d-7c42-4fd5-a9dd-15ff22c52f3c" name="Default Changelist" comment="Updated README.md" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
