@@ -14,8 +14,32 @@ To use this utility follow the following steps:
 6. Minimise the connected SSH window and leave it running in the background.
 7. After 10s access your home directory at H:
 
+*Note: Steps 1-3 are only required once.*
+
 If the SSH connection drops, the script will run again; repeat steps 5-7.
 
 To run the script automatically on startup, add a shortcut to connectHomeCS.bat to %AppData%\Microsoft\Windows\Start Menu\Programs\Startup
 
 If you don't want to trust the pre-built executable, you can compile it yourself [here](../src/).
+
+### **If this is your first time mounting your home folder, you will need to follow these additional steps after step 6 above:**
+1. Run the following command (from a non-elevated command prompt):
+   ```
+   net use h: /delete
+   ```
+   (The result of this command doesn't matter).
+2. Navigate to the 'This PC' folder in windows explorer.
+3. In the 'Computer' tab at the top of the screen click 'Map network drive'.
+4. Select 'H:' from the dropdown list.
+5. For folder, enter \\localhost\<your cs username>.
+6. Unselect 'Reconnect at sign-in'.
+7. Select 'Connect using different credentials'.
+8. Click 'Finish'.
+9. For Username enter 'CSAD\<your cs username>'.
+10. For Password enter your cs password.
+11. Tick 'Remember my credentials'.
+12. Click Ok.
+13. Repeat steps 10-12.
+14. *(Optional)* Restart ConnectHomeCS.bat.
+
+*Note: These steps are only required once.*
