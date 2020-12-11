@@ -1,0 +1,63 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"CMakeRunConfigurationManager\" shouldGenerate=\"true\" shouldDeleteObsolete=\"true\">\r\n    <generated />\r\n  </component>\r\n  <component name=\"CMakeSettings\">\r\n    <configurations>\r\n      <configuration PROFILE_NAME=\"Debug\" CONFIG_NAME=\"Debug\" ENABLED=\"true\" />\r\n    </configurations>\r\n  </component>\r\n  <component name=\"CargoProjects\">\r\n    <cargoProject FILE=\"$PROJECT_DIR$/Cargo.toml\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"e21bc18d-7c42-4fd5-a9dd-15ff22c52f3c\" name=\"Default Changelist\" comment=\"Updated README.md\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Mount CS Home Folder Remote/port_proxy_renamed.exe\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Mount CS Home Folder Remote/port_proxy_renamed.exe\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main.rs\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main.rs\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ClangdSettings\">\r\n    <option name=\"formatViaClangd\" value=\"false\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MacroExpansionManager\">\r\n    <option name=\"directoryName\" value=\"m1rgu8rr\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1lQGYDSEtwNuzHMsPbhnMmbHz6x\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"cf.first.check.clang-format\" value=\"false\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/Mount CS Home Folder Remote\" />\r\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\r\n    <property name=\"org.rust.cargo.project.model.PROJECT_DISCOVERY\" value=\"true\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\seann\\CLionProjects\\port_proxy\\Mount CS Home Folder Remote\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Cargo.Run\">\r\n    <configuration name=\"Expand port_proxy\" type=\"CargoCommandRunConfiguration\" factoryName=\"Cargo Command\" temporary=\"true\">\r\n      <option name=\"channel\" value=\"DEFAULT\" />\r\n      <option name=\"command\" value=\"expand --bin port_proxy --color=always --theme=GitHub --tests\" />\r\n      <option name=\"allFeatures\" value=\"false\" />\r\n      <option name=\"emulateTerminal\" value=\"false\" />\r\n      <option name=\"backtrace\" value=\"SHORT\" />\r\n      <option name=\"workingDirectory\" value=\"file://$PROJECT_DIR$\" />\r\n      <envs />\r\n      <method v=\"2\">\r\n        <option name=\"CARGO.BUILD_TASK_PROVIDER\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Run\" type=\"CargoCommandRunConfiguration\" factoryName=\"Cargo Command\">\r\n      <option name=\"channel\" value=\"DEFAULT\" />\r\n      <option name=\"command\" value=\"run --package port_proxy_renamed --bin port_proxy_renamed 3000 4000\" />\r\n      <option name=\"allFeatures\" value=\"false\" />\r\n      <option name=\"emulateTerminal\" value=\"false\" />\r\n      <option name=\"backtrace\" value=\"SHORT\" />\r\n      <option name=\"workingDirectory\" value=\"file://$PROJECT_DIR$\" />\r\n      <envs />\r\n      <method v=\"2\">\r\n        <option name=\"CARGO.BUILD_TASK_PROVIDER\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"GradleAppRunConfiguration\" factoryName=\"Application\" REDIRECT_INPUT=\"false\" ELEVATE=\"false\" PASS_PARENT_ENVS_2=\"true\">\r\n      <method v=\"2\">\r\n        <option name=\"com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <list>\r\n      <item itemvalue=\"Cargo.Run\" />\r\n      <item itemvalue=\"Cargo.Expand port_proxy\" />\r\n    </list>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Cargo.Expand port_proxy\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"RustProjectSettings\">\r\n    <option name=\"toolchainHomeDirectory\" value=\"$USER_HOME$/.cargo/bin\" />\r\n    <option name=\"version\" value=\"2\" />\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"e21bc18d-7c42-4fd5-a9dd-15ff22c52f3c\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1607521946372</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1607521946372</updated>\r\n      <workItem from=\"1607521948616\" duration=\"14248000\" />\r\n      <workItem from=\"1607574428842\" duration=\"638000\" />\r\n      <workItem from=\"1607576145518\" duration=\"2446000\" />\r\n      <workItem from=\"1607643937617\" duration=\"9615000\" />\r\n      <workItem from=\"1607708733415\" duration=\"5311000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Port Proxy\">\r\n      <created>1607709108327</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607709108327</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Added remote cs home folder scripts.\">\r\n      <created>1607710503546</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607710503546</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Updated README.md\">\r\n      <created>1607710583073</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607710583073</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Updated README.md\">\r\n      <created>1607710861036</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1607710861036</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"5\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Port Proxy\" />\r\n    <MESSAGE value=\"Added remote cs home folder scripts.\" />\r\n    <MESSAGE value=\"Updated README.md\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Updated README.md\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 956cb1d5c74dc8ec52a25b2f38ea4d72b038f7c7)
++++ b/.idea/workspace.xml	(date 1607721906154)
+@@ -12,11 +12,7 @@
+     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="e21bc18d-7c42-4fd5-a9dd-15ff22c52f3c" name="Default Changelist" comment="Updated README.md">
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Mount CS Home Folder Remote/port_proxy_renamed.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Mount CS Home Folder Remote/port_proxy_renamed.exe" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
+-    </list>
++    <list default="true" id="e21bc18d-7c42-4fd5-a9dd-15ff22c52f3c" name="Default Changelist" comment="Updated README.md" />
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -107,7 +103,7 @@
+       <workItem from="1607574428842" duration="638000" />
+       <workItem from="1607576145518" duration="2446000" />
+       <workItem from="1607643937617" duration="9615000" />
+-      <workItem from="1607708733415" duration="5311000" />
++      <workItem from="1607708733415" duration="5667000" />
+     </task>
+     <task id="LOCAL-00001" summary="Port Proxy">
+       <created>1607709108327</created>
+@@ -137,7 +133,21 @@
+       <option name="project" value="LOCAL" />
+       <updated>1607710861036</updated>
+     </task>
+-    <option name="localTasksCounter" value="5" />
++    <task id="LOCAL-00005" summary="Improved port_proxy program">
++      <created>1607721584155</created>
++      <option name="number" value="00005" />
++      <option name="presentableId" value="LOCAL-00005" />
++      <option name="project" value="LOCAL" />
++      <updated>1607721584155</updated>
++    </task>
++    <task id="LOCAL-00006" summary="Updated README.md">
++      <created>1607721809323</created>
++      <option name="number" value="00006" />
++      <option name="presentableId" value="LOCAL-00006" />
++      <option name="project" value="LOCAL" />
++      <updated>1607721809323</updated>
++    </task>
++    <option name="localTasksCounter" value="7" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -157,6 +167,7 @@
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="Port Proxy" />
+     <MESSAGE value="Added remote cs home folder scripts." />
++    <MESSAGE value="Improved port_proxy program" />
+     <MESSAGE value="Updated README.md" />
+     <option name="LAST_COMMIT_MESSAGE" value="Updated README.md" />
+   </component>
