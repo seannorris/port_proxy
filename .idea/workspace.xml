@@ -12,7 +12,11 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e21bc18d-7c42-4fd5-a9dd-15ff22c52f3c" name="Default Changelist" comment="Updated README.md" />
+    <list default="true" id="e21bc18d-7c42-4fd5-a9dd-15ff22c52f3c" name="Default Changelist" comment="Updated README.md">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mount CS Home Folder Remote/port_proxy_renamed.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Mount CS Home Folder Remote/port_proxy_renamed.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,7 +66,7 @@
     </configuration>
     <configuration name="Run" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
       <option name="channel" value="DEFAULT" />
-      <option name="command" value="run --package port_proxy --bin port_proxy 3000 4000" />
+      <option name="command" value="run --package port_proxy_renamed --bin port_proxy_renamed 3000 4000" />
       <option name="allFeatures" value="false" />
       <option name="emulateTerminal" value="false" />
       <option name="backtrace" value="SHORT" />
@@ -77,6 +81,10 @@
         <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Cargo.Run" />
+      <item itemvalue="Cargo.Expand port_proxy" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Cargo.Expand port_proxy" />
@@ -99,7 +107,7 @@
       <workItem from="1607574428842" duration="638000" />
       <workItem from="1607576145518" duration="2446000" />
       <workItem from="1607643937617" duration="9615000" />
-      <workItem from="1607708733415" duration="1919000" />
+      <workItem from="1607708733415" duration="5311000" />
     </task>
     <task id="LOCAL-00001" summary="Port Proxy">
       <created>1607709108327</created>
@@ -122,7 +130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607710583073</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Updated README.md">
+      <created>1607710861036</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1607710861036</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

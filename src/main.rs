@@ -41,11 +41,13 @@ fn main()
         for index in 0..connections.len()
         {
             blocked_all &= check_conn(&mut connections, index, false, &mut remove_set);
-            blocked_all &= check_conn(&mut connections, index, true, &mut remove_set);
+            if !remove_set.contains(&index)
+            {
+                blocked_all &= check_conn(&mut connections, index, true, &mut remove_set);
+            }
         }
 
         //Check for new connections.
-        let mut drop_all = false;
         match dst_listener.accept()
         {
             Ok(stream) => {
@@ -56,9 +58,9 @@ fn main()
                             src_stream,
                             dst_stream: stream.0,
                         });
-                        println!("Got a connection!");
+                        println!("Got a connection! (Currently connected: {})", connections.len());
                     }
-                    Err(_e) => drop_all = true
+                    Err(_e) => eprintln!("Failed to bind to source port.")
                 }
             }
             Err(ref e) if e.kind() == io::ErrorKind::WouldBlock => blocked_all &= true,
@@ -68,13 +70,12 @@ fn main()
         //Drop old connections.
         if remove_set.len() > 0
         {
-            let mut new_connections: Vec<Connection> = Vec::new();
             for index in 0..connections.len()
             {
                 let connection = connections.remove(0);
-                if drop_all || remove_set.contains(&index)
+                if remove_set.contains(&index)
                 {
-                    println!("Dropped a connection!");
+                    println!("Dropped a connection! (Currently connected: {})", connections.len());
                     connection.dst_stream.shutdown(Shutdown::Both).expect("Failed to close dst connection.");
                     drop(connection.dst_stream);
                     connection.src_stream.shutdown(Shutdown::Both).expect("Failed to close dst connection.");
@@ -82,10 +83,9 @@ fn main()
                 }
                 else
                 {
-                    new_connections.push(connection);
+                    connections.push(connection);
                 }
             }
-            connections.append(&mut new_connections);
             remove_set.clear();
         }
 
