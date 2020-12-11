@@ -31,12 +31,12 @@ If you don't want to trust the pre-built executable, you can compile it yourself
 2. Navigate to the 'This PC' folder in windows explorer.
 3. In the 'Computer' tab at the top of the screen click 'Map network drive'.
 4. Select 'H:' from the dropdown list.
-5. For folder, enter \\localhost\<your cs username>.
+5. For folder, enter ```\\localhost\<your cs username>```.
 6. Unselect 'Reconnect at sign-in'.
 7. Select 'Connect using different credentials'.
 8. Click 'Finish'.
-9. For Username enter 'CSAD\<your cs username>'.
-10. For Password enter your cs password.
+9. For Username, enter ```CSAD\<your cs username>```.
+10. For Password, enter your cs password.
 11. Tick 'Remember my credentials'.
 12. Click Ok.
 13. Repeat steps 10-12.
