@@ -1,3 +1,4 @@
+# CS Home Folder Remote Mounter
 The scripts in this folder can be used to mount your home folder in windows while outside of the St Andrews uni network.
 
 To use this utility follow the following steps:
