@@ -12,7 +12,14 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e21bc18d-7c42-4fd5-a9dd-15ff22c52f3c" name="Default Changelist" comment="" />
+    <list default="true" id="e21bc18d-7c42-4fd5-a9dd-15ff22c52f3c" name="Default Changelist" comment="Port Proxy">
+      <change afterPath="$PROJECT_DIR$/Mount CS Home Folder Remote/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mount CS Home Folder Remote/connectHomeCS.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mount CS Home Folder Remote/forwardSambaPort.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mount CS Home Folder Remote/mountSambaFolder.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Mount CS Home Folder Remote/port_proxy_renamed.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,7 +45,14 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Mount CS Home Folder Remote" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="org.rust.cargo.project.model.PROJECT_DISCOVERY" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\seann\CLionProjects\port_proxy\Mount CS Home Folder Remote" />
+    </key>
   </component>
   <component name="RunManager" selected="Cargo.Run">
     <configuration name="Expand port_proxy" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
@@ -65,6 +79,11 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Cargo.Expand port_proxy" />
@@ -87,11 +106,34 @@
       <workItem from="1607574428842" duration="638000" />
       <workItem from="1607576145518" duration="2446000" />
       <workItem from="1607643937617" duration="9615000" />
-      <workItem from="1607708733415" duration="351000" />
+      <workItem from="1607708733415" duration="1591000" />
     </task>
+    <task id="LOCAL-00001" summary="Port Proxy">
+      <created>1607709108327</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1607709108327</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Port Proxy" />
+    <option name="LAST_COMMIT_MESSAGE" value="Port Proxy" />
   </component>
 </project>
