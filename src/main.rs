@@ -1,10 +1,11 @@
-use std::io::{Read, Write};
+use std::io::{Read, Write, Error};
 use std::thread::sleep;
 use std::time::{Duration, Instant};
 use std::{env, io, net};
 use std::fs::File;
 use std::collections::HashSet;
 use std::net::{Shutdown, TcpStream};
+use std::path::Path;
 
 fn main()
 {
@@ -15,17 +16,25 @@ fn main()
         return;
     }
 
-    let pid = std::process::id();
-    let mut file = File::create(format!("{}\\port_proxy_{}_{}.lock", std::env::var("TEMP").expect("failed to read TEMP var."), args[1], args[2])).expect("failed to open lock file.");
-    file.write_all(format!("{}", pid).as_ref()).expect("Failed to write to lock file.");
-    drop(file);
+    let dir = match std::env::var("TEMP")
+    {
+        Ok(temp) => temp,
+        Err(_) => "/dev/null".to_string()
+    };
+    let path = Path::new(&dir).join(format!("port_proxy_{}_{}.lock", args[1], args[2]));
+    match File::create(path)
+    {
+        Ok(mut file) => {
+            let _ = file.write_all(format!("{}", std::process::id()).as_ref());
+        },
+        Err(_) => eprintln!("Failed to create lock file.")
+    }
 
     println!("Source: {}, Destination: {}", args[1], args[2]);
     let src_port = &args[1];
     let dst_listener = net::TcpListener::bind(format!("0.0.0.0:{}", args[2]))
         .expect("failed to bind to dst port.");
-    dst_listener
-        .set_nonblocking(true)
+    dst_listener.set_nonblocking(true)
         .expect("Failed to set non-blocking for dst port.");
 
     let mut connections: Vec<Connection> = Vec::new();
@@ -40,10 +49,19 @@ fn main()
         //Check each connection.
         for index in 0..connections.len()
         {
-            blocked_all &= check_conn(&mut connections, index, false, &mut remove_set);
+            let connection : &mut Connection = &mut connections[index];
+            match check_conn(&mut connection.src_stream, &mut connection.dst_stream)
+            {
+                Ok(result) => blocked_all &= result,
+                Err(_) => { remove_set.insert(index); }
+            }
             if !remove_set.contains(&index)
             {
-                blocked_all &= check_conn(&mut connections, index, true, &mut remove_set);
+                match check_conn(&mut connection.dst_stream, &mut connection.src_stream)
+                {
+                    Ok(result) => blocked_all &= result,
+                    Err(_) => { remove_set.insert(index); }
+                }
             }
         }
 
@@ -56,7 +74,7 @@ fn main()
                     Ok(src_stream) => {
                         connections.push(Connection {
                             src_stream,
-                            dst_stream: stream.0,
+                            dst_stream: setup_conn(stream.0).unwrap(),
                         });
                         println!("Got a connection! (Currently connected: {})", connections.len());
                     }
@@ -76,9 +94,9 @@ fn main()
                 if remove_set.contains(&index)
                 {
                     println!("Dropped a connection! (Currently connected: {})", connections.len());
-                    connection.dst_stream.shutdown(Shutdown::Both).expect("Failed to close dst connection.");
+                    let _ = connection.dst_stream.shutdown(Shutdown::Both);
                     drop(connection.dst_stream);
-                    connection.src_stream.shutdown(Shutdown::Both).expect("Failed to close dst connection.");
+                    let _ = connection.src_stream.shutdown(Shutdown::Both);
                     drop(connection.src_stream);
                 }
                 else
@@ -103,40 +121,32 @@ fn main()
     }
 }
 
-fn check_conn(vec: &mut Vec<Connection>, index: usize, reverse_order: bool, remove_queue: &mut HashSet<usize>) -> bool
+fn check_conn(from: &mut TcpStream, to: &mut TcpStream) -> Result<bool, Error>
 {
-    let conn = &vec[index];
-    let mut from = if reverse_order { &conn.dst_stream } else { &conn.src_stream };
-    let mut to = if reverse_order { &conn.src_stream } else { &conn.dst_stream };
     let mut buf:Vec<u8> = vec![0; 4096]; //For some reason a new buffer each time MASSIVELY improves performance.
-    match from.read(&mut *buf)
+    return match from.read(&mut *buf)
     {
         Ok(bytes) => {
             buf.truncate(bytes);
-            to.write_all(&*buf).expect("Failed to write.");
-            to.flush().unwrap();
+            to.write_all(&*buf)?;
+            to.flush()?;
+            return Ok(false);
         }
-        Err(ref e) if e.kind() == io::ErrorKind::WouldBlock => return true,
-        Err(_e) => {remove_queue.insert(index);}
+        Err(ref e) if e.kind() == io::ErrorKind::WouldBlock => Ok(true),
+        Err(e) => Err(e)
     };
-    return false;
 }
 
-fn get_conn(port: &str) -> Result<TcpStream, &'static str>
+fn get_conn(port: &str) -> Result<TcpStream, Error>
 {
-    return match net::TcpStream::connect(format!("127.0.0.1:{}", port))
-    {
-        Ok(stream) => {
-            stream
-                .set_nonblocking(true)
-                .expect(&*format!("set_nonblocking failed for port {}.", port));
-            stream
-                .set_nodelay(true)
-                .expect(&*format!("set_nodelay failed for port {}.", port));
-            Ok(stream)
-        }
-        Err(_e) => Err("Failed to bind.")
-    }
+    setup_conn(net::TcpStream::connect(format!("127.0.0.1:{}", port))?)
+}
+
+fn setup_conn(stream: TcpStream) -> Result<TcpStream, Error>
+{
+    stream.set_nonblocking(true)?;
+    stream.set_nodelay(true)?;
+    Ok(stream)
 }
 
 struct Connection
