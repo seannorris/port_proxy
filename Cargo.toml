@@ -1,5 +1,5 @@
 [package]
-name = "port_proxy_renamed"
+name = "port_proxy"
 version = "0.1.0"
 authors = ["Sean Norris <sn76@st-andrews.ac.uk>"]
 edition = "2018"
