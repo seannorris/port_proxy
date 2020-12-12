@@ -113,6 +113,10 @@ fn main()
             {
                 sleep(Duration::from_millis(50));
             }
+            else if last_write.elapsed().as_millis() > 50
+            {
+                sleep(Duration::from_millis(5));
+            }
         }
         else
         {
