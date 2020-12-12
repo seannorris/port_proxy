@@ -1,11 +1,19 @@
-use std::io::{Read, Write, Error};
-use std::thread::sleep;
-use std::time::{Duration, Instant};
-use std::{env, io, net};
-use std::fs::File;
-use std::collections::HashSet;
-use std::net::{Shutdown, TcpStream};
-use std::path::Path;
+use std::{
+    env,
+    net::{
+        self,
+        TcpStream,
+        Shutdown::Both
+    },
+    thread,
+    io::{Read, Write, Error},
+    fs::File,
+    path::Path,
+    sync::{
+        Arc,
+        atomic::{AtomicBool, Ordering}
+    }
+};
 
 fn main()
 {
@@ -34,111 +42,65 @@ fn main()
     let src_port = &args[1];
     let dst_listener = net::TcpListener::bind(format!("0.0.0.0:{}", args[2]))
         .expect("failed to bind to dst port.");
-    dst_listener.set_nonblocking(true)
-        .expect("Failed to set non-blocking for dst port.");
 
-    let mut connections: Vec<Connection> = Vec::new();
-    let mut remove_set: std::collections::HashSet<usize> = HashSet::new();
-
-    let mut last_write = Instant::now();
-    let mut blocked_all: bool;
     loop
     {
-        blocked_all = true;
-
-        //Check each connection.
-        for index in 0..connections.len()
-        {
-            let connection : &mut Connection = &mut connections[index];
-            match check_conn(&mut connection.src_stream, &mut connection.dst_stream)
-            {
-                Ok(result) => blocked_all &= result,
-                Err(_) => { remove_set.insert(index); }
-            }
-            if !remove_set.contains(&index)
-            {
-                match check_conn(&mut connection.dst_stream, &mut connection.src_stream)
-                {
-                    Ok(result) => blocked_all &= result,
-                    Err(_) => { remove_set.insert(index); }
-                }
-            }
-        }
-
-        //Check for new connections.
         match dst_listener.accept()
         {
-            Ok(stream) => {
+            Ok( stream) => {
                 match get_conn(src_port)
                 {
                     Ok(src_stream) => {
-                        connections.push(Connection {
-                            src_stream,
-                            dst_stream: setup_conn(stream.0).unwrap(),
-                        });
-                        println!("Got a connection! (Currently connected: {})", connections.len());
+                        let src_stream_cloned = src_stream.try_clone().expect("Failed to clone src stream.");
+                        let dst_stream = setup_conn(stream.0).unwrap();
+                        let dst_stream_cloned = dst_stream.try_clone().expect("Failed to clone dst stream.");
+                        let dropped = Arc::new(AtomicBool::new(false));
+                        check_conn(src_stream_cloned, dst_stream_cloned, dropped.clone());
+                        check_conn(dst_stream, src_stream, dropped);
+                        println!("Got a connection!");
                     }
                     Err(_e) => eprintln!("Failed to bind to source port.")
                 }
-            }
-            Err(ref e) if e.kind() == io::ErrorKind::WouldBlock => blocked_all &= true,
+            },
             Err(_e) => eprintln!("Failed to accept connection.")
         };
-
-        //Drop old connections.
-        if remove_set.len() > 0
-        {
-            for index in 0..connections.len()
-            {
-                let connection = connections.remove(0);
-                if remove_set.contains(&index)
-                {
-                    println!("Dropped a connection! (Currently connected: {})", connections.len());
-                    let _ = connection.dst_stream.shutdown(Shutdown::Both);
-                    drop(connection.dst_stream);
-                    let _ = connection.src_stream.shutdown(Shutdown::Both);
-                    drop(connection.src_stream);
-                }
-                else
-                {
-                    connections.push(connection);
-                }
-            }
-            remove_set.clear();
-        }
-
-        if blocked_all
-        {
-            if last_write.elapsed().as_secs() > 1
-            {
-                sleep(Duration::from_millis(50));
-            }
-            else if last_write.elapsed().as_millis() > 50
-            {
-                sleep(Duration::from_millis(5));
-            }
-        }
-        else
-        {
-            last_write = Instant::now();
-        }
     }
 }
 
-fn check_conn(from: &mut TcpStream, to: &mut TcpStream) -> Result<bool, Error>
+fn check_conn(mut from: TcpStream, mut to: TcpStream, dropped: Arc<AtomicBool>)
+{
+    thread::spawn(move || {
+        let mut break_loop = false;
+        loop
+        {
+            match do_read_write(&mut from, &mut to)
+            {
+                Ok(_) => (),
+                Err(_e) => break_loop = true
+            };
+            if break_loop || dropped.load(Ordering::Relaxed)
+            {
+                break;
+            }
+        }
+        if !dropped.load(Ordering::Relaxed)
+        {
+            dropped.store(true, Ordering::Relaxed);
+            println!("Dropped a connection!");
+        }
+        let _ = from.shutdown(Both);
+        let _ = to.shutdown(Both);
+    });
+
+}
+
+fn do_read_write(from: &mut TcpStream, to: &mut TcpStream) -> Result<(), Error>
 {
     let mut buf:Vec<u8> = vec![0; 4096]; //For some reason a new buffer each time MASSIVELY improves performance.
-    return match from.read(&mut *buf)
-    {
-        Ok(bytes) => {
-            buf.truncate(bytes);
-            to.write_all(&*buf)?;
-            to.flush()?;
-            return Ok(false);
-        }
-        Err(ref e) if e.kind() == io::ErrorKind::WouldBlock => Ok(true),
-        Err(e) => Err(e)
-    };
+    let size = from.read(&mut *buf)?;
+    buf.truncate(size);
+    to.write_all(&*buf)?;
+    Ok(to.flush()?)
 }
 
 fn get_conn(port: &str) -> Result<TcpStream, Error>
@@ -148,13 +110,6 @@ fn get_conn(port: &str) -> Result<TcpStream, Error>
 
 fn setup_conn(stream: TcpStream) -> Result<TcpStream, Error>
 {
-    stream.set_nonblocking(true)?;
     stream.set_nodelay(true)?;
     Ok(stream)
-}
-
-struct Connection
-{
-    src_stream: net::TcpStream,
-    dst_stream: net::TcpStream,
 }
