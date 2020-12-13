@@ -70,23 +70,20 @@ fn main()
 fn check_conn(mut from: TcpStream, mut to: TcpStream, dropped: Arc<AtomicBool>)
 {
     thread::spawn(move || {
-        let mut break_loop = false;
         loop
         {
             match do_read_write(&mut from, &mut to)
             {
                 Ok(_) => (),
-                Err(_e) => break_loop = true
+                Err(_e) => {
+                    dropped.store(true, Ordering::Relaxed);
+                    println!("Dropped a connection!");
+                }
             };
-            if break_loop || dropped.load(Ordering::Relaxed)
+            if dropped.load(Ordering::Relaxed)
             {
                 break;
             }
-        }
-        if !dropped.load(Ordering::Relaxed)
-        {
-            dropped.store(true, Ordering::Relaxed);
-            println!("Dropped a connection!");
         }
         let _ = from.shutdown(Both);
         let _ = to.shutdown(Both);
