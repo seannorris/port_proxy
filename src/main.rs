@@ -70,9 +70,10 @@ fn main()
 fn check_conn(mut from: TcpStream, mut to: TcpStream, dropped: Arc<AtomicBool>)
 {
     thread::spawn(move || {
+        let mut buf = vec![0; 65536];
         loop
         {
-            match do_read_write(&mut from, &mut to)
+            match do_read_write(&mut from, &mut to, &mut buf)
             {
                 Ok(_) => (),
                 Err(_e) => {
@@ -91,12 +92,10 @@ fn check_conn(mut from: TcpStream, mut to: TcpStream, dropped: Arc<AtomicBool>)
 
 }
 
-fn do_read_write(from: &mut TcpStream, to: &mut TcpStream) -> Result<(), Error>
+fn do_read_write(from: &mut TcpStream, to: &mut TcpStream, buf: &mut [u8]) -> Result<(), Error>
 {
-    let mut buf:Vec<u8> = vec![0; 4096]; //For some reason a new buffer each time MASSIVELY improves performance.
-    let size = from.read(&mut *buf)?;
-    buf.truncate(size);
-    to.write_all(&*buf)?;
+    let size = from.read(buf)?;
+    to.write(&buf[..size])?;
     Ok(to.flush()?)
 }
 

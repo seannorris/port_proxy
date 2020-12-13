@@ -12,9 +12,10 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e21bc18d-7c42-4fd5-a9dd-15ff22c52f3c" name="Default Changelist" comment="Updated to use threading.">
+    <list default="true" id="e21bc18d-7c42-4fd5-a9dd-15ff22c52f3c" name="Default Changelist" comment="Mount private folder as well&#10;Slight code refactor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Mount CS Home Folder Remote/mountSambaFolder.bat" beforeDir="false" afterPath="$PROJECT_DIR$/Mount CS Home Folder Remote/mountSambaFolder.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mount CS Home Folder Remote/Mount CS Home Folder Remote.zip" beforeDir="false" afterPath="$PROJECT_DIR$/Mount CS Home Folder Remote/Mount CS Home Folder Remote.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Mount CS Home Folder Remote/port_proxy.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Mount CS Home Folder Remote/port_proxy.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,17 +43,27 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Mount CS Home Folder Remote" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/target/release/port_proxy.exe" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="org.rust.cargo.project.model.PROJECT_DISCOVERY" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Rust" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/target/release/port_proxy.exe" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\seann\CLionProjects\port_proxy\target\release" />
+      <recent name="C:\Users\seann\CLionProjects\port_proxy\Mount CS Home Folder Remote" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\seann\CLionProjects\port_proxy\Mount CS Home Folder Remote" />
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Run" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
       <option name="channel" value="DEFAULT" />
       <option name="command" value="run --package port_proxy --bin port_proxy 3000 4000" />
@@ -63,11 +74,6 @@
       <envs />
       <method v="2">
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
   </component>
@@ -89,6 +95,7 @@
       <workItem from="1607576145518" duration="2446000" />
       <workItem from="1607643937617" duration="9615000" />
       <workItem from="1607708733415" duration="5311000" />
+      <workItem from="1607865705953" duration="5063000" />
     </task>
     <task id="LOCAL-00001" summary="Port Proxy">
       <created>1607709108327</created>
@@ -153,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607799074857</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Mount private folder as well&#10;Slight code refactor">
+      <created>1607862899204</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1607862899204</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,6 +183,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Port Proxy" />
@@ -179,7 +194,8 @@
     <MESSAGE value="Admin" />
     <MESSAGE value="Tweaked Performance" />
     <MESSAGE value="Updated to use threading." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated to use threading." />
+    <MESSAGE value="Mount private folder as well&#10;Slight code refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mount private folder as well&#10;Slight code refactor" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
