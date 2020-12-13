@@ -5,4 +5,4 @@ Also includes a utility to mount your CS home folder while away from St Andrews.
 
 Build instructions in [source folder](./src).
 
-If you are looking for a precompiled executable, one for windows can be found [here](https://github.com/seannorris/port_proxy/releases/)
+If you are looking for a precompiled executable, one for windows/linux can be found [here](https://github.com/seannorris/port_proxy/releases/)
